@@ -2,6 +2,7 @@
 
 # CQRS
 
+This library provides a .NET implementation of the CQRS pattern, allowing you to separate command and query responsibilities in your applications. CQRS promotes a clear separation between the command side that performs operations and the query side that retrieves data.
 
 ## Benchmarks
 
