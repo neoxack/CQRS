@@ -1,7 +1,8 @@
 [![.NET](https://github.com/neoxack/CQRS/actions/workflows/dotnet.yml/badge.svg)](https://github.com/neoxack/CQRS/actions/workflows/dotnet.yml)
 [![NuGet](https://img.shields.io/nuget/v/Neoxack.CQRS.svg)](https://www.nuget.org/packages/Neoxack.CQRS)
-[![NuGet](https://img.shields.io/nuget/dt/Neoxack.CQRS.svg)](https://www.nuget.org/packages/Neoxack.SCQRS)
+[![NuGet](https://img.shields.io/nuget/dt/Neoxack.CQRS.svg)](https://www.nuget.org/packages/Neoxack.CQRS)
 
+# CQRS
 
 This library provides a .NET implementation of the CQRS pattern, allowing you to separate command and query responsibilities in your applications. CQRS promotes a clear separation between the command side that performs operations and the query side that retrieves data.
 
