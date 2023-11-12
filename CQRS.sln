@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS", "src\CQRS\CQRS.csproj", "{F721E495-AC8E-4229-A820-6429D7BB8530}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Benchmark", "src\CQRS.Benchmark\CQRS.Benchmark.csproj", "{DC2D2C10-88CB-420D-BC30-AA7D95F02C76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Tests", "src\CQRS.Tests\CQRS.Tests.csproj", "{086EFEC3-F3B6-4427-86B0-C0281B9E63D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F721E495-AC8E-4229-A820-6429D7BB8530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F721E495-AC8E-4229-A820-6429D7BB8530}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F721E495-AC8E-4229-A820-6429D7BB8530}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F721E495-AC8E-4229-A820-6429D7BB8530}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC2D2C10-88CB-420D-BC30-AA7D95F02C76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC2D2C10-88CB-420D-BC30-AA7D95F02C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC2D2C10-88CB-420D-BC30-AA7D95F02C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC2D2C10-88CB-420D-BC30-AA7D95F02C76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{086EFEC3-F3B6-4427-86B0-C0281B9E63D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{086EFEC3-F3B6-4427-86B0-C0281B9E63D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{086EFEC3-F3B6-4427-86B0-C0281B9E63D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{086EFEC3-F3B6-4427-86B0-C0281B9E63D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
