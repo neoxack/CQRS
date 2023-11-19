@@ -9,18 +9,24 @@ namespace CQRS
         public static void AddCQRS(this IServiceCollection services, Assembly assembly)
         {
             var classTypes = assembly.ExportedTypes.Select(t => t.GetTypeInfo()).Where(t => t.IsClass && !t.IsAbstract);
-
             foreach (var type in classTypes)
             {
-                var interfaces = type.ImplementedInterfaces.Select(i => i.GetTypeInfo()).ToArray();
-
-                foreach (var handlerType in interfaces.Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IQueryHandler<,>)))
+                var interfaces = type.ImplementedInterfaces.Where(e=>e.IsGenericType).Select(i => i.GetTypeInfo()).ToArray();
+                if (interfaces.Length > 0)
                 {
-                    services.AddScoped(handlerType.AsType(), type.AsType());
-                }
-                foreach (var handlerType in interfaces.Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(ICommandHandler<,>)))
-                {
-                    services.AddScoped(handlerType.AsType(), type.AsType());
+                    foreach (var handlerType in interfaces)
+                    {
+                        var typeDefinition = handlerType.GetGenericTypeDefinition();
+                        if (typeDefinition == typeof(IQueryHandler<,>))
+                        {
+                            services.AddScoped(handlerType.AsType(), type.AsType());
+                        }
+                        else
+                        if (typeDefinition == typeof(ICommandHandler<,>))
+                        {
+                            services.AddScoped(handlerType.AsType(), type.AsType());
+                        }
+                    }
                 }
             }
             

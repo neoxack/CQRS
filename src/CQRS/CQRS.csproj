@@ -9,7 +9,7 @@
     <PropertyGroup>
         <Title>CQRS</Title>
         <Description>Simple and fast CQRS implementation</Description>
-        <Version>1.1.0</Version>
+        <Version>1.1.1</Version>
         <PackageId>Neoxack.CQRS</PackageId>
         <PackageTags>CQRS;performance</PackageTags>
         <PackageProjectUrl>https://github.com/neoxack/CQRS</PackageProjectUrl>
