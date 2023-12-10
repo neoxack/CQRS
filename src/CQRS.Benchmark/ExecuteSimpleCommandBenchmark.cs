@@ -26,14 +26,14 @@ public class ExecuteSimpleCommandBenchmark
     [Benchmark(Description = "CQRS", Baseline = true)]
     public void ExecuteCommand()
     {
-        var commandDispatcher = _serviceProvider.GetRequiredService<ICommandDispatcher>();
+        var commandDispatcher = _serviceProvider.GetService<ICommandDispatcher>()!;
         var _ = commandDispatcher.Execute(new PingCommand("ping"));
     }
     
     [Benchmark(Description = "MediatR")]
     public void ExecuteRequest()
     {
-        var mediator = _mediatrServiceProvider.GetRequiredService<IMediator>();
+        var mediator = _mediatrServiceProvider.GetService<IMediator>()!;
         var _ = mediator.Send(new PingRequest("ping")).Result;
     }
 }

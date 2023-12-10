@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CQRS
 {
-    public class QueryDispatcher : IQueryDispatcher
+    public sealed class QueryDispatcher : IQueryDispatcher
     {
         private readonly IServiceProvider _serviceProvider;
         

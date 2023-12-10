@@ -30,8 +30,8 @@ namespace CQRS
                 }
             }
             
-            services.AddScoped<ICommandDispatcher, CommandDispatcher>();
-            services.AddScoped<IQueryDispatcher, QueryDispatcher>();
+            services.AddSingleton<ICommandDispatcher, CommandDispatcher>();
+            services.AddSingleton<IQueryDispatcher, QueryDispatcher>();
         }
     }
 }
