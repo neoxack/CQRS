@@ -18,6 +18,47 @@ Or via the .NET Core command line interface:
 
 Either commands, from Package Manager Console or .NET Core CLI, will download and install Neoxack.CQRS and all required dependencies.
 
+## Example
+```
+public class PingCommand : ICommand<string>
+{
+    public string Value { get; }
+
+    public PingCommand(string value)
+    {
+        Value = value;
+    }
+}
+```
+```
+public class PingCommandHandler : ICommandHandler<PingCommand, string>
+{
+    public string Handle(PingCommand command)
+    {
+        return command.Value;
+    }
+}
+```
+```
+public class PingController
+{
+    private readonly IQueryDispatcher _queryDispatcher;
+    private readonly ICommandDispatcher _commandDispatcher;
+
+    public PingController(IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher)
+    {
+        _queryDispatcher = queryDispatcher;
+        _commandDispatcher = commandDispatcher;
+    }
+
+    [HttpPost("ping")]
+    public string Ping()
+    {
+        return _commandDispatcher.Execute(new PingCommand("Ping"));
+    }
+}
+```
+
 ### Registering with `IServiceCollection`
 
 CQRS supports `Microsoft.Extensions.DependencyInjection.Abstractions` directly. To register CQRS services and handlers:
@@ -28,8 +69,8 @@ services.AddCQRS(typeof(Startup).Assembly);
 
 This registers:
 
-- `ICommandDispather` as singleton
-- `IQueryDispatcher` as singleton
+- `ICommandDispather` as scoped
+- `IQueryDispatcher` as scoped
 - `ICommandHandler<,>` concrete implementations as scoped
 - `IQueryHandler<,>` concrete implementations as scoped
 

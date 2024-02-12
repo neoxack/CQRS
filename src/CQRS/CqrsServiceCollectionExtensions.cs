@@ -8,24 +8,24 @@ namespace CQRS
         // ReSharper disable once InconsistentNaming
         public static void AddCQRS(this IServiceCollection services, Assembly assembly)
         {
-            var classTypes = assembly.ExportedTypes.Select(t => t.GetTypeInfo()).Where(t => t.IsClass && !t.IsAbstract);
+            var classTypes = assembly.GetExportedTypes();
             foreach (var type in classTypes)
             {
-                var interfaces = type.ImplementedInterfaces.Where(e=>e.IsGenericType).Select(i => i.GetTypeInfo()).ToArray();
-                if (interfaces.Length > 0)
+                if (!type.IsClass || type.IsAbstract)
                 {
-                    foreach (var handlerType in interfaces)
+                    continue;
+                }
+                var implementedInterfaces = type.GetInterfaces();
+                foreach (var implementedInterface in implementedInterfaces)
+                {
+                    if (!implementedInterface.IsGenericType)
                     {
-                        var typeDefinition = handlerType.GetGenericTypeDefinition();
-                        if (typeDefinition == typeof(IQueryHandler<,>))
-                        {
-                            services.AddScoped(handlerType.AsType(), type.AsType());
-                        }
-                        else
-                        if (typeDefinition == typeof(ICommandHandler<,>))
-                        {
-                            services.AddScoped(handlerType.AsType(), type.AsType());
-                        }
+                        continue;
+                    }
+                    var typeDefinition = implementedInterface.GetGenericTypeDefinition();
+                    if (typeDefinition == typeof(IQueryHandler<,>) || typeDefinition == typeof(ICommandHandler<,>))
+                    {
+                        services.AddScoped(implementedInterface, type);
                     }
                 }
             }
