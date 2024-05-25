@@ -8,7 +8,7 @@ namespace CQRS
         // ReSharper disable once InconsistentNaming
         public static void AddCQRS(this IServiceCollection services, Assembly assembly)
         {
-            var classTypes = assembly.GetExportedTypes();
+            var classTypes = assembly.DefinedTypes;
             foreach (var type in classTypes)
             {
                 if (!type.IsClass || type.IsAbstract)

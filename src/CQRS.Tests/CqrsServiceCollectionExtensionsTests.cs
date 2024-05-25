@@ -24,6 +24,9 @@ public class CqrsServiceCollectionExtensionsTests
         
         var pingCommandHandler = serviceProvider.GetService<ICommandHandler<PingCommand, string>>();
         Assert.NotNull(pingCommandHandler);
+        
+        var internalPingCommandHandler = serviceProvider.GetService<ICommandHandler<InternalPingCommand, string>>();
+        Assert.NotNull(internalPingCommandHandler);
     }
     
     [Fact]
@@ -47,5 +50,8 @@ public class CqrsServiceCollectionExtensionsTests
         
         var pingCommandHandler = scopedServiceProvider.GetService<ICommandHandler<PingCommand, string>>();
         Assert.NotNull(pingCommandHandler);
+        
+        var internalPingCommandHandler = serviceProvider.GetService<ICommandHandler<InternalPingCommand, string>>();
+        Assert.NotNull(internalPingCommandHandler);
     }
 }
